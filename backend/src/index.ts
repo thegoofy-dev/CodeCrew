@@ -53,13 +53,16 @@ app.use(
 app.get(
   `/`,
   asyncHandler(async (req: Request, res: Response, next: NextFunction) => {
-    throw new BadRequestException(
-      "This is a bad request",
-      ErrorCodeEnum.AUTH_INVALID_TOKEN
-    );
-    res.status(HTTPSTATUS.OK).json({
+    // Returning the success response
+    return res.status(HTTPSTATUS.OK).json({
       message: "Backend part of CodeCrew",
     });
+    
+    // Or if you want to test error handling, only throw the error
+    // throw new BadRequestException(
+    //   "This is a bad request",
+    //   ErrorCodeEnum.AUTH_INVALID_TOKEN
+    // );
   })
 );
 
